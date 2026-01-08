@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Resort Booking - Bookings</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #e0f7fa, #b2ebf2);
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+
+  header {
+    background-color: #00796b;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 2em;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  main {
+    max-width: 950px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    text-align: center;
+    color: #00796b;
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  form input, form select, form button {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    flex: 1 1 30%;
+  }
+
+  form button {
+    background-color: #00796b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1 1 100%;
+  }
+
+  form button:hover {
+    background-color: #005e51;
+    transform: scale(1.05);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+
+  th {
+    text-align: left;
+    padding: 12px;
+    background-color: #00796b;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+  }
+
+  td {
+    background-color: #e0f2f1;
+    padding: 12px;
+    border-bottom: 10px solid transparent;
+    border-radius: 0 0 10px 10px;
+    transition: background 0.3s ease;
+  }
+
+  td:hover {
+    background-color: #b2dfdb;
+  }
+</style>
+<script>
+function validateForm() {
+  let guest = document.forms["bookingForm"]["guest_id"].value;
+  let room = document.forms["bookingForm"]["room_id"].value;
+  let checkin = document.forms["bookingForm"]["checkin"].value;
+  let checkout = document.forms["bookingForm"]["checkout"].value;
+
+  if(guest === "" || room === "" || checkin === "" || checkout === "") {
+    alert("All fields are required!");
+    return false;
+  }
+
+  if(new Date(checkin) >= new Date(checkout)) {
+    alert("Check-out date must be after check-in date!");
+    return false;
+  }
+
+  return true;
+}
+</script>
+</head>
+<body>
+
+<header>Resort Booking System</header>
+
+<main>
+<h2>Bookings</h2>
+
+<form name="bookingForm" onsubmit="return validateForm()">
+  Guest ID: <input type="number" name="guest_id" placeholder="1">
+  Room ID: <input type="number" name="room_id" placeholder="2">
+  Check-in: <input type="date" name="checkin">
+  Check-out: <input type="date" name="checkout">
+  <button type="submit">Add Booking</button>
+</form>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Guest ID</th>
+    <th>Room ID</th>
+    <th>Check-in</th>
+    <th>Check-out</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>1</td>
+    <td>2</td>
+    <td>2026-01-10</td>
+    <td>2026-01-15</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>3</td>
+    <td>1</td>
+    <td>2026-02-01</td>
+    <td>2026-02-05</td>
+  </tr>
+</table>
+</main>
+
+</body>
+</html>
