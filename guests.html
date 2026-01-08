@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Resort Booking - Guests</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f9d6d5, #fef6e4);
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+
+  header {
+    background-color: #c04f4f;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 2em;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    text-align: center;
+    color: #c04f4f;
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  form input, form button {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    flex: 1 1 30%;
+  }
+
+  form button {
+    background-color: #c04f4f;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1 1 100%;
+  }
+
+  form button:hover {
+    background-color: #9e3b3b;
+    transform: scale(1.05);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+
+  th {
+    text-align: left;
+    padding: 12px;
+    background-color: #c04f4f;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+  }
+
+  td {
+    background-color: #fff0f0;
+    padding: 12px;
+    border-bottom: 10px solid transparent;
+    border-radius: 0 0 10px 10px;
+    transition: background 0.3s ease;
+  }
+
+  td:hover {
+    background-color: #ffdada;
+  }
+</style>
+<script>
+function validateForm() {
+  let name = document.forms["guestForm"]["guest_name"].value;
+  let email = document.forms["guestForm"]["guest_email"].value;
+  let phone = document.forms["guestForm"]["guest_phone"].value;
+
+  if(name === "" || email === "" || phone === "") {
+    alert("All fields are required!");
+    return false;
+  }
+
+  let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if(!email.match(emailPattern)) {
+    alert("Enter a valid email address!");
+    return false;
+  }
+
+  if(isNaN(phone) || phone.length < 7) {
+    alert("Enter a valid phone number!");
+    return false;
+  }
+
+  return true;
+}
+</script>
+</head>
+<body>
+
+<header>Resort Booking System</header>
+
+<main>
+<h2>Guests</h2>
+
+<form name="guestForm" onsubmit="return validateForm()">
+  Name: <input type="text" name="guest_name" placeholder="Jane Doe">
+  Email: <input type="text" name="guest_email" placeholder="jane@example.com">
+  Phone: <input type="text" name="guest_phone" placeholder="1234567890">
+  <button type="submit">Add Guest</button>
+</form>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Jane Smith</td>
+    <td>jane.smith@email.com</td>
+    <td>5551234567</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Michael Lee</td>
+    <td>michael.lee@email.com</td>
+    <td>5559876543</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Sophia Tan</td>
+    <td>sophia.tan@email.com</td>
+    <td>5556789012</td>
+  </tr>
+</table>
+</main>
+
+</body>
+</html>
