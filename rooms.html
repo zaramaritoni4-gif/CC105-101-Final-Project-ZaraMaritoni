@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Resort Booking - Rooms</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+    color: #333;
+  }
+
+  header {
+    background-color: #4a7c59;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 2em;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    text-align: center;
+    color: #4a7c59;
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  form input, form select, form button {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+  }
+
+  form button {
+    background-color: #4a7c59;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  form button:hover {
+    background-color: #3f6b4b;
+    transform: scale(1.05);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+
+  th {
+    text-align: left;
+    padding: 12px;
+    background-color: #4a7c59;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+  }
+
+  td {
+    background-color: #f0f9f5;
+    padding: 12px;
+    border-bottom: 10px solid transparent;
+    border-radius: 0 0 10px 10px;
+    transition: background 0.3s ease;
+  }
+
+  td:hover {
+    background-color: #d1ebdf;
+  }
+</style>
+<script>
+function validateForm() {
+  let room = document.forms["roomForm"]["room_name"].value;
+  let type = document.forms["roomForm"]["room_type"].value;
+  let price = document.forms["roomForm"]["price"].value;
+  if(room === "" || type === "" || price === "") {
+    alert("All fields are required!");
+    return false;
+  }
+  if(isNaN(price) || price <= 0) {
+    alert("Price must be a positive number!");
+    return false;
+  }
+  return true;
+}
+</script>
+</head>
+<body>
+
+<header>Resort Booking System</header>
+
+<main>
+<h2>Rooms</h2>
+
+<form name="roomForm" onsubmit="return validateForm()">
+  Room Name: <input type="text" name="room_name" placeholder="Deluxe Suite">
+  Room Type: 
+  <select name="room_type">
+    <option value="">Select Type</option>
+    <option value="Single">Single</option>
+    <option value="Double">Double</option>
+    <option value="Suite">Suite</option>
+  </select>
+  Price: <input type="number" name="price" placeholder="150">
+  <button type="submit">Add Room</button>
+</form>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Room Name</th>
+    <th>Type</th>
+    <th>Price ($)</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Ocean View Suite</td>
+    <td>Suite</td>
+    <td>250</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Garden Room</td>
+    <td>Double</td>
+    <td>180</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Standard Single</td>
+    <td>Single</td>
+    <td>120</td>
+  </tr>
+</table>
+</main>
+
+</body>
+</html>
